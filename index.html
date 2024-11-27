@@ -1,478 +1,137 @@
 <html lang="id">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Kedai Kopi Modern</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-    <style>
-        :root {
-            --primary-color: #3E2723;
-            --secondary-color: #FF6F00;
-            --text-color: #333;
-            --light-bg: #F9F5F0;
-            --hero-bg: #2E1B0F;
-            --menu-bg: #F3E5AB;
-            --news-bg: #E0C097;
-            --contact-bg: #4A3428;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            transition: 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            height: 100vh;
-            background: var(--hero-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 1rem;
-            position: relative;
-        }
-
-        .hero img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.5;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--secondary-color);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: 0.3s;
-            font-weight: 500;
-            animation: fadeInUp 1s ease 0.4s;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .btn:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .btn:active {
-            animation: clickEffect 0.3s ease;
-        }
-
-        @keyframes clickEffect {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(0.95);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .section {
-            padding: 5rem 1rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-
-        .menu {
-            background: var(--menu-bg);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            border-radius: 15px;
-        }
-
-        .menu-item {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .menu-item-content {
-            padding: 1.5rem;
-        }
-
-        .menu-item h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .menu-item p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            color: var(--secondary-color);
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .news {
-            background: var(--news-bg);
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            border-radius: 15px;
-        }
-
-        .news-item {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .news-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .news-content {
-            padding: 1.5rem;
-        }
-
-        .news-date {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact {
-            background: var(--contact-bg);
-            color: #fff;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .form-group textarea {
-            height: 150px;
-        }
-
-        footer {
-            background: var(--primary-color);
-            color: #fff;
-            padding: 3rem 1rem;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            nav {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Consultation App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #e0f7fa, #f3e5f5);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <a class="logo" href="#">Kedai Kopi</a>
-            <nav>
-                <a href="#home">Beranda</a>
-                <a href="#menu">Menu</a>
-                <a href="#news">Berita</a>
-                <a href="#contact">Kontak</a>
-            </nav>
+  <div class="container mx-auto p-6">
+    <div class="header text-center mb-10">
+      <h1 class="text-3xl font-bold text-gray-800">Peduli Jiwa</h1>
+      <p class="text-gray-600 mt-2">Platform Konsultasi Kesehatan Mental Modern</p>
+      <img 
+        src="https://storage.googleapis.com/a1aa/image/syquQA5lYFrSHFQlXlMYCP0616R6YflNCkaFi5EmXNF7Tb6JA.jpg" 
+        alt="Illustration of mental health support with people talking and a psychologist providing consultation" 
+        class="mx-auto mt-6 rounded-lg shadow-lg"
+        width="800" height="400"
+      >
+    </div>
+    <div class="services grid md:grid-cols-3 gap-6">
+      <div class="service-card bg-gradient-to-r from-blue-500 to-purple-500 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer" onclick="showBookingForm('Konsultasi Individu')">
+        <div class="icon text-white text-4xl mb-4">
+          <i class="fas fa-user"></i>
         </div>
-    </header>
-    <section class="hero" id="home">
-        <img alt="Interior kedai kopi modern dengan meja kayu dan lampu gantung" src="https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg?cs=srgb&dl=pexels-nastyasensei-66707-2575835.jpg&fm=jpg&_gl=1*llb3q5*_ga*MzQ1MzkzOTAxLjE3MzI0MDY1OTg.*_ga_8JE65Q40S6*MTczMjQwNjU5OC4xLjEuMTczMjQwNjcxNy4wLjAuMA.."/>
-        <div class="hero-content">
-            <h1>Selamat Datang di Kedai Kopi</h1>
-            <p>Nikmati kopi terbaik di kota, dibuat dengan penuh semangat dan keahlian</p>
-            <a class="btn" href="#menu">Jelajahi Menu Kami</a>
+        <h2 class="text-xl font-semibold text-white">Konsultasi Individu</h2>
+        <p class="text-white mt-2">Sesi personal dengan psikolog berpengalaman</p>
+      </div>
+      <div class="service-card bg-gradient-to-r from-green-500 to-teal-500 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer" onclick="showBookingForm('Terapi Kelompok')">
+        <div class="icon text-white text-4xl mb-4">
+          <i class="fas fa-heart"></i>
         </div>
-    </section>
-    <section class="section" id="menu">
-        <h2 class="section-title">Menu Andalan Kami</h2>
-        <div class="menu">
-            <div class="menu-item">
-                <img alt="Secangkir Cappuccino dengan latte art yang indah di atasnya" height="300" src="https://storage.googleapis.com/a1aa/image/mBmseogimjReMExoAlDa4cT3OPxYEFooa4u42fpXOyGPQEonA.jpg" width="400"/>
-                <div class="menu-item-content">
-                    <h3>Cappuccino</h3>
-                    <p>Cappuccino yang kaya dan creamy dengan perpaduan sempurna antara espresso dan susu kukus.</p>
-                    <span class="price">Rp 35.000</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img alt="Segelas Iced Coffee dengan es batu dan sedotan" height="300" src="https://storage.googleapis.com/a1aa/image/emPkf9wAaeG3Kp6bP6EoQmD3QjPBjUeG0WPE1DldbPEqgIQPB.jpg" width="400"/>
-                <div class="menu-item-content">
-                    <h3>Iced Coffee</h3>
-                    <p>Iced coffee yang menyegarkan dibuat dengan campuran khas kami, sempurna untuk hari yang panas.</p>
-                    <span class="price">Rp 30.000</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img alt="Secangkir kecil Espresso dengan crema yang kaya di atasnya" height="300" src="https://storage.googleapis.com/a1aa/image/eIT6TMBELYWkYKOcW5JafgXkcOPWEVjlIo7YU8T5aVtMIC0TA.jpg" width="400"/>
-                <div class="menu-item-content">
-                    <h3>Espresso</h3>
-                    <p>Espresso yang kuat dan berani, pilihan sempurna untuk setiap saat.</p>
-                    <span class="price">Rp 25.000</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img alt="Secangkir Latte dengan latte art berbentuk hati di atasnya" height="300" src="https://storage.googleapis.com/a1aa/image/xopmFzVuaSp2FJCBNMVFlHfs11lVWZZerbzXgKpZM65PIC0TA.jpg" width="400"/>
-                <div class="menu-item-content">
-                    <h3>Latte</h3>
-                    <p>Latte yang halus dan creamy dengan keseimbangan sempurna antara espresso dan susu kukus.</p>
-                    <span class="price">Rp 35.000</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img alt="Segelas Mocha dengan whipped cream di atasnya" height="300" src="https://storage.googleapis.com/a1aa/image/w2TEeCN1SPU0X6J85B7fp2KfFeEG5r5lzwgxJC0niaZ3gIQPB.jpg" width="400"/>
-                <div class="menu-item-content">
-                    <h3>Mocha</h3>
-                    <p>Mocha yang lezat dengan campuran espresso, cokelat, dan susu kukus, dilengkapi dengan whipped cream.</p>
-                    <span class="price">Rp 40.000</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img alt="Secangkir Americano dengan seiris lemon di sampingnya" height="300" src="https://storage.googleapis.com/a1aa/image/IEe5l1ISeIsBLEzVM6aMJcPtVevjLP62yaHEQXfi5sk4gIQPB.jpg" width="400"/>
-                <div class="menu-item-content">
-                    <h3>Americano</h3>
-                    <p>Americano yang kuat dan halus, dibuat dengan espresso dan air panas.</p>
-                    <span class="price">Rp 25.000</span>
-                </div>
-            </div>
+        <h2 class="text-xl font-semibold text-white">Terapi Kelompok</h2>
+        <p class="text-white mt-2">Dukungan dari komunitas yang memahami</p>
+      </div>
+      <div class="service-card bg-gradient-to-r from-red-500 to-pink-500 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer" onclick="showBookingForm('Layanan Darurat')">
+        <div class="icon text-white text-4xl mb-4">
+          <i class="fas fa-shield-alt"></i>
         </div>
-    </section>
-    <section class="section news" id="news">
-        <h2 class="section-title">Berita Terbaru</h2>
-        <div class="news-grid">
-            <div class="news-item">
-                <img alt="Sesi pelatihan barista dengan peserta yang belajar membuat kopi" height="300" src="https://storage.googleapis.com/a1aa/image/pkeIVAGSfAmfEI95IJKfCLG7phRNpwATx44Kgn6qz6tBhIQPB.jpg" width="400"/>
-                <div class="news-content">
-                    <span class="news-date">23 November 2024</span>
-                    <h3>Program Pelatihan Barista Baru</h3>
-                    <p>Bergabunglah dengan program pelatihan barista kami yang komprehensif dan kuasai seni membuat kopi.</p>
-                </div>
-            </div>
-            <div class="news-item">
-                <img alt="Acara mencicipi kopi dengan berbagai sampel kopi di atas meja" height="300" src="https://storage.googleapis.com/a1aa/image/7AiJJRiDzdoRPJ5fQeoCeB4HiuAgnowM2jsJBIfPL5pSgIQPB.jpg" width="400"/>
-                <div class="news-content">
-                    <span class="news-date">20 November 2024</span>
-                    <h3>Acara Mencicipi Kopi</h3>
-                    <p>Rasakan campuran kopi baru kami di acara mencicipi yang akan datang.</p>
-                </div>
-            </div>
-            <div class="news-item">
-                <img alt="Tampilan minuman dan makanan musiman di kedai kopi" height="300" src="https://storage.googleapis.com/a1aa/image/5Ubd47IQ19rjIxLFgekTegqkLS9hTgfKHPglQYenhCqjgIQPB.jpg" width="400"/>
-                <div class="news-content">
-                    <span class="news-date">18 November 2024</span>
-                    <h3>Peluncuran Menu Musiman</h3>
-                    <p>Temukan minuman dan makanan musiman baru kami, tersedia untuk waktu terbatas.</p>
-                </div>
-            </div>
+        <h2 class="text-xl font-semibold text-white">Layanan Darurat</h2>
+        <p class="text-white mt-2">Bantuan cepat 24/7 untuk krisis</p>
+      </div>
+    </div>
+    <div class="form-container max-w-xl mx-auto bg-gradient-to-r from-purple-500 to-indigo-500 p-8 rounded-xl shadow-lg mt-10" id="booking-form" style="display: none;">
+      <a class="back-button text-white hover:underline mb-6 inline-block" href="#" onclick="showHome()">← Kembali</a>
+      <h2 class="text-2xl font-bold text-center text-white mb-6" id="form-title">Jadwalkan Konsultasi</h2>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-white mb-2">Nama Lengkap</label>
+          <input class="w-full p-2 border rounded-md" placeholder="Masukkan nama Anda" type="text" required>
         </div>
-    </section>
-    <section class="section contact" id="contact">
-        <h2 class="section-title">Hubungi Kami</h2>
-        <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label for="name">Nama</label>
-                    <input id="name" required="" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" required="" type="email"/>
-                </div>
-                <div class="form-group">
-                    <label for="message">Pesan</label>
-                    <textarea id="message" required=""></textarea>
-                </div>
-                <button class="btn" type="submit">Kirim Pesan</button>
-            </form>
+        <div>
+          <label class="block text-white mb-2">Email</label>
+          <input class="w-full p-2 border rounded-md" placeholder="Email aktif Anda" type="email" required>
         </div>
-    </section>
-    <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div>
+          <label class="block text-white mb-2">Pilih Tanggal</label>
+          <input class="w-full p-2 border rounded-md" type="date" required>
         </div>
-        <p>&copy; 2024 Kedai Kopi. All Rights Reserved.</p>
-    </footer>
+        <div>
+          <label class="block text-white mb-2">Pilih Waktu</label>
+          <select class="w-full p-2 border rounded-md" required>
+            <option value="09:00 - 10:00">09:00 - 10:00</option>
+            <option value="10:00 - 11:00">10:00 - 11:00</option>
+            <option value="14:00 - 15:00">14:00 - 15:00</option>
+            <option value="15:00 - 16:00">15:00 - 16:00</option>
+          </select>
+        </div>
+        <button class="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition-colors">Konfirmasi Jadwal</button>
+      </form>
+    </div>
+    <div class="additional-info mt-10 p-6 bg-white rounded-xl shadow-lg">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Informasi Tambahan</h2>
+      <p class="text-gray-600 mb-4">Kami menyediakan berbagai layanan untuk membantu Anda dalam menjaga kesehatan mental. Tim kami terdiri dari psikolog berpengalaman yang siap membantu Anda kapan saja.</p>
+      <ul class="list-disc list-inside text-gray-600">
+        <li>Konsultasi individu dengan psikolog berpengalaman</li>
+        <li>Terapi kelompok untuk dukungan komunitas</li>
+        <li>Layanan darurat 24/7 untuk krisis</li>
+        <li>Program kesehatan mental yang disesuaikan dengan kebutuhan Anda</li>
+        <li>Artikel dan sumber daya untuk edukasi kesehatan mental</li>
+      </ul>
+    </div>
+    <div class="testimonials mt-10 p-6 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl shadow-lg">
+      <h2 class="text-2xl font-bold text-white mb-4">Testimoni Pengguna</h2>
+      <div class="testimonial-item mb-4">
+        <p class="text-white">"Layanan ini sangat membantu saya dalam menghadapi masalah pribadi. Psikolognya sangat profesional dan pengertian." - <strong>Andi</strong></p>
+      </div>
+      <div class="testimonial-item mb-4">
+        <p class="text-white">"Terapi kelompoknya sangat mendukung. Saya merasa tidak sendirian dalam menghadapi masalah saya." - <strong>Siti</strong></p>
+      </div>
+      <div class="testimonial-item">
+        <p class="text-white">"Layanan daruratnya sangat responsif. Saya mendapatkan bantuan yang saya butuhkan dengan cepat." - <strong>Budi</strong></p>
+      </div>
+    </div>
+    <div class="contact-us mt-10 p-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg">
+      <h2 class="text-2xl font-bold text-white mb-4">Hubungi Kami</h2>
+      <p class="text-white mb-4">Jika Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, jangan ragu untuk menghubungi kami.</p>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-white mb-2">Nama</label>
+          <input class="w-full p-2 border rounded-md" placeholder="Nama Anda" type="text" required>
+        </div>
+        <div>
+          <label class="block text-white mb-2">Email</label>
+          <input class="w-full p-2 border rounded-md" placeholder="Email Anda" type="email" required>
+        </div>
+        <div>
+          <label class="block text-white mb-2">Pesan</label>
+          <textarea class="w-full p-2 border rounded-md" placeholder="Pesan Anda" rows="4" required></textarea>
+        </div>
+        <button class="w-full bg-green-600 text-white p-3 rounded-md hover:bg-green-700 transition-colors">Kirim Pesan</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    function showBookingForm(serviceTitle) {
+      document.querySelector('.services').style.display = 'none';
+      document.getElementById('booking-form').style.display = 'block';
+      document.getElementById('form-title').innerText = 'Jadwalkan ' + serviceTitle;
+    }
+
+    function showHome() {
+      document.querySelector('.services').style.display = 'grid';
+      document.getElementById('booking-form').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
